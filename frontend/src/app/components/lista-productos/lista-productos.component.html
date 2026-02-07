@@ -1,0 +1,61 @@
+<div class="card">
+    <<div class="card-header bg-white d-flex justify-content-between align-items-center">
+        <h4 class="mb-0">Inventario de Productos</h4>
+
+        <button class="btn btn-primary" routerLink="/registrar">
+            <i class="bi bi-plus-lg"></i> + Nuevo Producto
+        </button>
+</div>
+<div class="card-body">
+    <table class="table table-hover table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Marca</th>
+                <th>Categoría</th>
+                <th>Precio</th>
+                <th>Existencia</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let producto of productos">
+                <td>{{ producto.id }}</td>
+                <td>{{ producto.nombre }}</td>
+                <td>{{ producto.marca }}</td>
+                <td>{{ producto.categoria }}</td>
+                <td>${{ producto.precio }}</td>
+
+                <td [class.text-danger]="producto.existencia < 5" [class.fw-bold]="producto.existencia < 5">
+                    {{ producto.existencia }}
+                </td>
+
+                <td>
+                    <span class="badge" [class.bg-success]="producto.activo" [class.bg-secondary]="!producto.activo">
+                        {{ producto.activo ? 'Activo' : 'Inactivo' }}
+                    </span>
+                </td>
+                <td>
+                    <button class="btn btn-sm btn-primary me-2" [routerLink]="['/editar', producto.id]">
+                        <i class="bi bi-pencil"></i> Editar
+                    </button>
+                    <button class="btn btn-sm" [class.btn-danger]="producto.activo"
+                        [class.btn-success]="!producto.activo" (click)="alternarEstado(producto)">
+
+                        <i class="bi" [class.bi-x-circle]="producto.activo"
+                            [class.bi-check-circle]="!producto.activo"></i>
+                        {{ producto.activo ? 'Baja' : 'Activar' }}
+
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div *ngIf="productos.length === 0" class="alert alert-warning mt-3">
+        No hay productos registrados o no se pudo conectar con el servidor.
+    </div>
+</div>
+</div>

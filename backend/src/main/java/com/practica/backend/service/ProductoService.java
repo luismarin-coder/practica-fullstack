@@ -27,6 +27,7 @@ public class ProductoService {
 
     // 3. Guardar producto (con validación de nombre único)
     public Producto guardarProducto(Producto producto) {
+        producto.setId(null);
         // Si el ID es nulo (es nuevo) y ya existe el nombre -> Error
         if (producto.getId() == null && productoRepository.existsByNombre(producto.getNombre())) {
             throw new IllegalArgumentException("El nombre del producto ya existe");

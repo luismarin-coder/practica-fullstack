@@ -1,0 +1,43 @@
+<div class="col-md-6 offset-md-3">
+    <h3 class="text-center">{{ esEdicion ? 'Editar Producto' : 'Registrar Nuevo Producto' }}</h3>
+    
+    <form (ngSubmit)="onSubmit()">
+        
+        <div class="mb-3">
+            <label>Nombre del Producto</label>
+            <input type="text" class="form-control" id="nombre" 
+                [(ngModel)]="producto.nombre" name="nombre" required placeholder="Ej: Monitor Gamer">
+        </div>
+
+        <div class="mb-3">
+            <label>Marca</label>
+            <input type="text" class="form-control" id="marca" 
+                [(ngModel)]="producto.marca" name="marca" required placeholder="Ej: Samsung">
+        </div>
+
+        <div class="mb-3">
+            <label>Categoría</label>
+            <input type="text" class="form-control" id="categoria" 
+                [(ngModel)]="producto.categoria" name="categoria" required placeholder="Ej: Periféricos">
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label>Precio ($)</label>
+                <input type="number" class="form-control" id="precio" 
+                    [(ngModel)]="producto.precio" name="precio" required step="0.50">
+            </div>
+            <div class="col-md-6 mb-3">
+                <label>Existencia (Stock)</label>
+                <input type="number" class="form-control" id="existencia" 
+                    [(ngModel)]="producto.existencia" name="existencia" required>
+            </div>
+        </div>
+
+        <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-success">{{ esEdicion ? 'Actualizar' : 'Guardar' }}</button>
+            <button (click)="goToProductList()" class="btn btn-secondary">Cancelar</button>
+        </div>
+
+    </form>
+</div>
