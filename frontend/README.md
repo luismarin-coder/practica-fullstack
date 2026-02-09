@@ -1,27 +1,42 @@
-# Frontend
+```markdown
+# 💻 Sistema de Inventario - Frontend (Angular)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.7.
+Interfaz de usuario desarrollada en Angular para el consumo de la API de Inventario. Permite la gestión completa de productos, ajustes de stock y control de acceso simulado.
 
-## Development server
+## 🛠️ Requisitos Previos
+* **Node.js:** v16.20.0.
+* **NPM:** v8.19.4.
+* **Angular CLI:** v11.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## 🚀 Instalación y Ejecución
 
-## Code scaffolding
+1.  **Entrar al directorio:**
+    ```bash
+    cd frontend
+    ```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+2.  **Instalar dependencias:**
+    ```bash
+    npm install
+    ```
+    *(Nota: Si hay conflictos de versiones, usar `npm install --legacy-peer-deps`)*
 
-## Build
+3.  **Ejecutar el servidor de desarrollo:**
+    ```bash
+    ng serve -o
+    ```
+    La aplicación se abrirá automáticamente en: `http://localhost:4200`
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## 🔐 Credenciales de Acceso (Login Simulado)
 
-## Running unit tests
+El sistema cuenta con un Login simulado y protección de rutas (AuthGuard). Para ingresar, utilice las siguientes credenciales por defecto:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+* **Usuario:** `admin`
+* **Contraseña:** `12345`
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## ✨ Funcionalidades Implementadas
+* **Dashboard:** Listado de productos con indicadores de estado.
+* **CRUD Completo:** Registro y edición de productos.
+* **Baja Lógica:** Botón inteligente para activar/desactivar productos.
+* **Ajuste de Inventario:** Módulo especial para sumar/restar stock justificando el motivo.
+* **Seguridad:** Guard de rutas y manejo de sesión con LocalStorage.

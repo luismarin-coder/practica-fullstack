@@ -7,18 +7,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListaProductosComponent } from './components/lista-productos/lista-productos.component';
 import { RegistrarProductoComponent } from './components/registrar-producto/registrar-producto.component';
+import { LoginComponent } from './components/login/login.component';
+import { AjustarInventarioComponent } from './components/ajustar-inventario/ajustar-inventario.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListaProductosComponent,
-    RegistrarProductoComponent
+    RegistrarProductoComponent,
+    LoginComponent,
+    AjustarInventarioComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

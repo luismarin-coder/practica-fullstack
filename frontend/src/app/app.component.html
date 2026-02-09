@@ -1,6 +1,10 @@
 <nav class="navbar navbar-dark bg-primary mb-4">
-  <div class="container">
-    <a class="navbar-brand" routerLink="/productos">📦 Gestión de Inventario</a>
+  <div class="container d-flex justify-content-between"> <a class="navbar-brand" routerLink="/productos">📦 Gestión de Inventario</a>
+
+    <button *ngIf="router.url !== '/login'" class="btn btn-outline-light btn-sm" (click)="cerrarSesion()">
+      Cerrar Sesión <i class="bi bi-box-arrow-right"></i>
+    </button>
+    
   </div>
 </nav>
 

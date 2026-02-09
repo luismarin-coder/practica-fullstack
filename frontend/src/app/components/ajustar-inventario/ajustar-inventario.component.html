@@ -1,0 +1,31 @@
+<div class="col-md-6 offset-md-3 mt-4">
+    <div class="card shadow">
+        <div class="card-header bg-warning text-dark">
+            <h4 class="mb-0">⚠️ Ajuste de Inventario</h4>
+        </div>
+        <div class="card-body">
+            <form (ngSubmit)="guardarAjuste()">
+                
+                <div class="alert alert-info">
+                    Ingresa una cantidad <b>negativa</b> para restar (mermas) o <b>positiva</b> para sumar (compras).
+                </div>
+
+                <div class="mb-3">
+                    <label>Cantidad a ajustar (+/-)</label>
+                    <input type="number" class="form-control" [(ngModel)]="cantidad" name="cantidad" required placeholder="Ej: -5">
+                </div>
+
+                <div class="mb-3">
+                    <label>Motivo del ajuste</label>
+                    <textarea class="form-control" [(ngModel)]="motivo" name="motivo" required rows="3" placeholder="Ej: Producto dañado en traslado..."></textarea>
+                </div>
+
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-warning">Confirmar Ajuste</button>
+                    <button type="button" class="btn btn-secondary" (click)="cancelar()">Cancelar</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

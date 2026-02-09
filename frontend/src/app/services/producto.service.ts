@@ -35,4 +35,10 @@ export class ProductoService {
   actualizarProducto(id: number, producto: Producto): Observable<Producto> {
     return this.http.put<Producto>(`${this.apiUrl}/${id}`, producto);
   }
+
+  // 6. Ajustar Inventario
+  ajustarInventario(id: number, cantidad: number, motivo: string): Observable<Producto> {
+    const datos = { cantidad: cantidad, motivo: motivo };
+    return this.http.post<Producto>(`${this.apiUrl}/${id}/ajustar`, datos);
+  }
 }

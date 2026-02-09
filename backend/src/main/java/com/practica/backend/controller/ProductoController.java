@@ -68,4 +68,10 @@ public class ProductoController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @PostMapping("/{id}/ajustar")
+    public Producto ajustarInventario(@PathVariable Long id, @RequestBody AjusteDTO ajuste) {
+        return productoService.ajustarInventario(id, ajuste.getCantidad(), ajuste.getMotivo());
+    }
+
 }

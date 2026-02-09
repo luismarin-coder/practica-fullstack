@@ -56,5 +56,29 @@ public class ProductoService {
         producto.setActivo(!producto.getActivo());
         productoRepository.save(producto);
     }
+    // Ajustar inventario (Suma o Resta con validación)
+    public Producto ajustarInventario(Long id, Integer cantidad, String motivo) {
+        // Buscamos el producto
+        Producto producto = productoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
 
+        // Calcular el nuevo stock
+        int nuevoStock = producto.getExistencia() + cantidad;
+
+        // VALIDACIÓN: No permitir stock negativo
+        if (nuevoStock < 0) {
+            throw new IllegalArgumentException("El stock no puede ser negativo. Stock actual: " + producto.getExistencia());
+        }
+
+        // VALIDACIÓN: Motivo obligatorio
+        if (motivo == null || motivo.trim().isEmpty()) {
+            throw new IllegalArgumentException("Se requiere un motivo para el ajuste.");
+        }
+
+        // Guardamos el cambio
+        System.out.println("AJUSTE REALIZADO: " + motivo + " | Producto: " + producto.getNombre() + " | Cambio: " + cantidad);
+
+        producto.setExistencia(nuevoStock);
+        return productoRepository.save(producto);
+    }
 }
